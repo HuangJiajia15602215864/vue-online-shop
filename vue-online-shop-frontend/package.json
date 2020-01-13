@@ -12,6 +12,7 @@
   "dependencies": {
     "env": "^0.0.2",
     "path": "^0.12.7",
+    "vee-validate": "^3.2.1",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "webpack": "^3.12.0"
