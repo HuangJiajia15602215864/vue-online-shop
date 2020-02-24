@@ -16,6 +16,7 @@
       </div>
     </nav>
 
+    <!-- 渲染的路由组件 -->
     <router-view/>
   </div>
 </template>
