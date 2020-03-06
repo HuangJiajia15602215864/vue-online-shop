@@ -11,6 +11,9 @@ import Index from '@/pages/admin/Index';
 import New from '@/pages/admin/New';
 import Products from '@/pages/admin/Products';
 import Edit from '@/pages/admin/Edit';
+import Manufacturers from '@/pages/admin/Manufacturers';
+import NewManufacturers from '@/pages/admin/NewManufacturers';
+import EditManufacturers from '@/pages/admin/EditManufacturers';
 
 Vue.use(Router);
 
@@ -40,6 +43,21 @@ export default new Router({
           path: 'edit/:id',// 动态路由
           name: 'Edit',
           component: Edit,
+        },
+        {
+          path: 'manufacturers',
+          name: 'Manufacturers',
+          component: Manufacturers,
+        },
+        {
+          path: 'manufacturers/new',
+          name: 'NewManufacturers',
+          component: NewManufacturers,
+        },
+        {
+          path: 'manufacturers/edit/:id',//动态传参
+          name: 'EditManufacturers',
+          component: EditManufacturers,
         },
       ]
     },
