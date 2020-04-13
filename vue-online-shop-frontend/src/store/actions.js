@@ -1,5 +1,6 @@
 import axios from 'axios';
 const API_BASE = 'http://localhost:3000/api/v1';
+import { Message } from 'element-ui';
 
 import {// 导入字符串常量
   ADD_PRODUCT,
@@ -54,6 +55,13 @@ export const productActions = {
       commit(REMOVE_PRODUCT_SUCCESS, {
         productId,
       });
+      Message({
+        message: '恭喜你，商品删除成功！',
+        type: 'success'
+      })
+    })
+    .catch(() => {
+      Message.error('不好意思，商品删除失败！');
     })
   },
 
@@ -62,8 +70,15 @@ export const productActions = {
     const { product } = payload;
     axios.put(`${API_BASE}/products/${product._id}`, product).then(() => {
       commit(UPDATE_PRODUCT_SUCCESS, {
-        product,
+        product:product
       });
+      Message({
+        message: '恭喜你，商品更新成功！',
+        type: 'success'
+      })
+    })
+    .catch(() => {
+      Message.error('不好意思，商品更新失败！');
     })
   },
 
@@ -73,7 +88,14 @@ export const productActions = {
     axios.post(`${API_BASE}/products`, product).then(response => {
       commit(ADD_PRODUCT_SUCCESS, {
         product: response.data,
+      });
+      Message({
+        message: '恭喜你，商品添加成功！',
+        type: 'success'
       })
+    })
+    .catch(() => {
+      Message.error('不好意思，商品添加失败！');
     })
   }
 };
@@ -104,6 +126,13 @@ export const manufacturerActions = {
       commit(REMOVE_MANUFACTURER_SUCCESS, {
         manufacturerId,
       });
+      Message({
+        message: '恭喜你，制造商删除成功！',
+        type: 'success'
+      })
+    })
+    .catch(() => {
+      Message.error('不好意思，制造商删除失败！');
     })
   },
   updateManufacturer({ commit }, payload) {// 更新生产商信息
@@ -111,8 +140,15 @@ export const manufacturerActions = {
     const { manufacturer } = payload;
     axios.put(`${API_BASE}/manufacturers/${manufacturer._id}`, manufacturer).then(() => {
       commit(UPDATE_MANUFACTURER_SUCCESS, {
-        manufacturer,
+        manufacturer:manufacturer
       });
+      Message({
+        message: '恭喜你，制造商更新成功！',
+        type: 'success'
+      })
+    })
+    .catch(() => {
+      Message.error('不好意思，制造商更新失败！');
     })
   },
   addManufacturer({ commit }, payload) {// 添加生产商
@@ -121,7 +157,14 @@ export const manufacturerActions = {
     axios.post(`${API_BASE}/manufacturers`, manufacturer).then(response => {
       commit(ADD_MANUFACTURER_SUCCESS, {
         manufacturer: response.data,
+      });
+      Message({
+        message: '恭喜你，制造商添加成功！',
+        type: 'success'
       })
+    })
+    .catch(() => {
+      Message.error('不好意思，制造商添加失败！');
     })
   }
 }

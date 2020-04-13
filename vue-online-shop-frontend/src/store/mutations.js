@@ -23,6 +23,7 @@ import {
   REMOVE_MANUFACTURER,
   REMOVE_MANUFACTURER_SUCCESS,
 } from './mutation-types';
+import { Message } from 'element-ui';
 //商品
 export const productMutations = {
     [ALL_PRODUCTS](state) {// 所有商品（加载）
@@ -54,14 +55,14 @@ export const productMutations = {
       },
     [UPDATE_PRODUCT_SUCCESS](state, payload) {// 更新商品
         state.showLoader = false;     
-        const { product: newProduct } = payload;
-        state.product = newProduct;
+        const { product: newProduct } = payload;   
         state.products = state.products.map(product => {
           if (product._id === newProduct._id) {
             return newProduct;
           }   
           return product;
         })
+        state.product = newProduct;
       },
     [ADD_PRODUCT](state) {// 添加商品（加载）
         state.showLoader = true;
@@ -78,10 +79,18 @@ export const productMutations = {
     [ADD_TO_CART](state, payload) {// 加入购物车
       const { product } = payload;
       state.cart.push(product)
+      Message({
+        message: '恭喜你，成功加入购物车！',
+        type: 'success'
+      })
     },
     [REMOVE_FROM_CART](state, payload) {//从购物车移除
       const { productId } = payload
       state.cart = state.cart.filter(product => product._id !== productId)
+      Message({
+        message: '恭喜你，成功移除购物车！',
+        type: 'success'
+      })
     },
   }
  
@@ -126,6 +135,7 @@ export const productMutations = {
     
         return manufacturer;
       })
+      state.manufacturer = newManufacturer;
     },
     [ADD_MANUFACTURER](state) {
       state.showLoader = true;

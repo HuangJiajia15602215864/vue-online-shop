@@ -4,9 +4,7 @@
       <div class="container">
         This is ProductList
       </div>
-      <template v-for="product in products">
-        <product-item :product="product" :key="product._id"></product-item>
-      </template>
+        <product-item :products="products"></product-item>
     </div>
   </div>
 </template>
@@ -22,7 +20,6 @@
     },
     computed: {
       products() {
-        // return this.$store.state.products;
         return this.$store.getters.allProducts;
       }
     },
@@ -33,18 +30,4 @@
 
     }
   }
-
 </script>
-
-
-<style>
-  .product {
-    border-bottom: 1px solid black;
-  }
-
-  .product__image {
-    width: 100px;
-    height: 100px;
-  }
-
-</style>
